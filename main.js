@@ -195,13 +195,39 @@ var bobsDiner = new Restaurant("Bob's Diner", " a family joint", tableMenu)
 
 
 // want Bob's diner to print out: menu, with the plates o with the plates ingredients
-// print out prototypes as well
-// convert object into an array
-// convert this array into a string
 
 console.log(bobsDiner.toString())
 
+/**********************************************************
+ 							UI
+ **********************************************************/
+/**********************************************************
+ 							1.
+ **********************************************************/
 
-
+Drink.prototype.create = function(){
+		return $('<div class="food-item">').text(name)
+	})
+}
+Plate.prototype.create = function(){
+		return $('<div class="food-item">').text(name)
+	})
+}
+Order.prototype.create = function(){
+		return $('<div class="food-item">').text(name)
+	})
+}
+Menu.prototype.create = function(){
+		return $('<div class="food-item">').text(name)
+	})
+}
+Restaurant.prototype.create = function(){
+		return $('<div class="food-item">').text(name)
+	})
+}
+Customer.prototype.create = function(){
+		return $('<div class="food-item">').text(name)
+	})
+}
 
 
