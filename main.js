@@ -7,36 +7,36 @@ $(function() {
 							1.
 **********************************************************/
 
-var FoodItem = function(name, calories, vegan, glutenFree, citrusFree) {
-	this.name = name
-	this.calories = calories
-	this.vegan = vegan
-	this.glutenFree = glutenFree
-	this.citrusFree = citrusFree
-}
+	var FoodItem = function(name, calories, vegan, glutenFree, citrusFree) {
+		this.name = name
+		this.calories = calories
+		this.vegan = vegan
+		this.glutenFree = glutenFree
+		this.citrusFree = citrusFree
+	}
 
 /**********************************************************
 							2.
 **********************************************************/
 
-FoodItem.prototype.toString = function(){
-	var stringer = ("The name is " + this.name + ", the amount of calories is " + this.calories + ". Is it vegan? " + this.vegan + ". Is it gluten free? " + this.glutenFree + "." + " Is it citrus free? " + this.citrusFree )
+	FoodItem.prototype.toString = function(){
+		var stringer = ("The name is " + this.name + ", the amount of calories is " + this.calories + ". Is it vegan? " + this.vegan + ". Is it gluten free? " + this.glutenFree + "." + " Is it citrus free? " + this.citrusFree )
 
-		return stringer
-}
+			return stringer
+	}
 
 /**********************************************************
 							3.
 **********************************************************/
 
-var chickenFillet = new FoodItem("Chicken Fillet Roll", 550, false, false, true)
-console.log(chickenFillet.toString())
+	var chickenFillet = new FoodItem("Chicken Fillet Roll", 550, false, false, true)
+	console.log(chickenFillet.toString())
 
-var iceCream = new FoodItem("Ice Cream Sandwhich", 250, false, true, true)
-console.log(iceCream.toString())
+	var iceCream = new FoodItem("Ice Cream Sandwhich", 250, false, true, true)
+	console.log(iceCream.toString())
 
-var wholeChicken = new FoodItem("Whole Chicken", 700, false, true, false)
-console.log(wholeChicken.toString())
+	var wholeChicken = new FoodItem("Whole Chicken", 700, false, true, false)
+	console.log(wholeChicken.toString())
 
 
 /**********************************************************
@@ -45,149 +45,153 @@ console.log(wholeChicken.toString())
 /**********************************************************
 						 1.
 **********************************************************/
-var Drink = function ( name, description, price, ingredients) {
-	this.name = name
-	this.description = description
-	this.price = price
-	this.ingredients = ingredients
-}
+	var Drink = function ( name, description, price, ingredients) {
+		this.name = name
+		this.description = description
+		this.price = price
+		this.ingredients = ingredients
+	}
+	
+	var plateArray = []
+	var Plate = function( name, description, price, ingredients) {
+		this.name = name
+		this.description = description
+		this.price = price
+		this.ingredients = ingredients
+		plateArray.push(this)
+	}
 
-var Plate = function( name, description, price, ingredients) {
-	this.name = name
-	this.description = description
-	this.price = price
-	this.ingredients = ingredients
-}
+	var Order = function( plates) {
+		this.plates = plates
+	}
 
-var Order = function( plates) {
-	this.plates = plates
-}
+	var Menu = function ( plates)  {
+		this.plates = plates
+	}
 
-var Menu = function ( plates)  {
-	this.plates = plates
-}
+	var Restaurant = function( name, description, menu) {
+		this.name = name
+		this.description = description
+		this.menu = menu
+	}
 
-var Restaurant = function( name, description, menu) {
-	this.name = name
-	this.description = description
-	this.menu = menu
-}
-
-var Customer = function( dietaryPreference) {
-	this.dietaryPreference = dietaryPreference
-}
+	var Customer = function( dietaryPreference) {
+		this.dietaryPreference = dietaryPreference
+	}
 
 
 /**********************************************************
 						 2.
 **********************************************************/
-Drink.prototype.toString = function(){
-	var stringer = ("This drink is a " + this.name + ", the description is " + this.description + ". The price is " + this.price + ". The lovely ingredients are " + this.ingredients + ".")
+	Drink.prototype.toString = function(){
+		var stringer = ("This drink is a " + this.name + ", the description is " + this.description + ". The price is " + this.price + ". The lovely ingredients are " + this.ingredients + ".")
 
-		return stringer
-}
+			return stringer
+	}
 
-Plate.prototype.toString = function(){ 
-	var stringer = ("This plate is a " + this.name + ", and you could say that it is " + this.description + ". The price is " + this.price + "." + "\n" + " The lovely ingredients are: " + this.ingredients + "." + "\n")
+	Plate.prototype.toString = function(){ 
+		var stringer = ("This plate is a " + this.name + ", and you could say that it is " + this.description + ". The price is " + this.price + "." + "\n" + " The lovely ingredients are: " + this.ingredients + "." + "\n")
 
-		return stringer
-}
+			return stringer
+	}
 
-Order.prototype.toString = function(){
-	var stringer = ("This is your order:" + this.plates + ".")
+	Order.prototype.toString = function(){
+		var stringer = ("This is your order:" + this.plates + ".")
 
-		return stringer
-}
+			return stringer
+	}
 
-Menu.prototype.toString = function(){
-	var stringer = ("Menu: " + this.plates + "." + "\n" )
+	Menu.prototype.toString = function(){
+		var stringer = ("Menu: " + this.plates + "." + "\n" )
 
-		return stringer
-}
+			return stringer
+	}
 
-Restaurant.prototype.toString = function(){
-	var stringer = ("The name is " + this.name + ", and this is definitely" + this.description + ". The following items are available: " + this.menu + ".")
+	Restaurant.prototype.toString = function(){
+		var stringer = ("The name is " + this.name + ", and this is definitely" + this.description + ". The following items are available: " + this.menu + ".")
 
-		return stringer
-}
+			return stringer
+	}
 
-Customer.prototype.toString = function(){
-	var stringer = ("Your dietary preference is as follows" + this.dietaryPreference + ".")
+	Customer.prototype.toString = function(){
+		var stringer = ("Your dietary preference is as follows" + this.dietaryPreference + ".")
 
-		return stringer
-}
+			return stringer
+	}
 
 
 /**********************************************************
 						 3.
 **********************************************************/
-Plate.prototype.isVegan = function(){
-	var count = 0	
-	this.ingredients.forEach(function(element){
-		
-		if(element === "meat") {
- 		 count ++ 
-		}  
-	}) 
-   		if(count > 0) {
-   			return "this is not vegan"
-   		} else{
-   			return "This is vegan"
-   		}
-}
-
-Plate.prototype.isGlutenFree = function(){
-	var count = 0
-	this.ingredients.forEach(function(element){
-		if(element === "flour") {
- 		 count ++ 
-		}  
-	}) 
-   		if(count > 0) {
-   			return "this is not gluten free"
-   		} else{
-   			return "This is gluten free"
-   		}
-}
-
-Plate.prototype.isCitrusFree = function(){ 
-	count = 0 
-	this.ingredients.forEach(function(element){
-		if(element === "lemon"){
-			count ++
-		}
-	})
-	if(count > 0) {
-		return "this is not citrus free"
-	} else { 
-		return "This is citrus free"
+	Plate.prototype.isVegan = function(){
+		var count = 0	
+		this.ingredients.forEach(function(element){
+			
+			if(element === "meat") {
+	 		 count ++ 
+			}  
+		}) 
+	   		if(count > 0) {
+	   			return false
+	   		} else{
+	   			return true
+	   		}
 	}
-}
+
+
+	Plate.prototype.isGlutenFree = function(){
+		var count = 0
+		this.ingredients.forEach(function(element){
+			if(element === "flour") {
+	 		 count ++ 
+			}  
+		}) 
+	   		if(count > 0) {
+	   			return false
+	   		} else {
+	   			return true
+	   		}
+	}
+
+	Plate.prototype.isCitrusFree = function(){ 
+		count = 0 
+		this.ingredients.forEach(function(element){
+			if(element === "lemon"){
+				count ++
+			}
+		})
+		if(count > 0) {
+			return false
+		} else { 
+			return true
+		}
+	}
 
 
  /**********************************************************
  							4.
  **********************************************************/
 
-var burritoPlate = new Plate("Burrito", "tasty", 8.00, ["meat", "flour", "lemon"])
+	var burritoPlate = new Plate("Burrito", "tasty", 8.50, ["meat", "flour", "beans"])
+	console.log(burritoPlate.isVegan())
 
-var guacamolePlate = new Plate("Guacamole Plate", "big", 5, ["avocado", "garlic", "lemon"])
+	var guacamolePlate = new Plate("Guacamole Plate", "big", 9.00, ["avocado", "garlic", "lemon"])
 
-var margaritaDrink = new Drink("Margarita", "quenches thirst", 9.00, ["apple", "spirit", "olives"])
+	var margaritaDrink = new Drink("Margarita", "quenches thirst", 9.00, ["apple", "spirit", "olives"])
 
-console.log(guacamolePlate.isCitrusFree())
+	console.log(guacamolePlate.isCitrusFree())
 
  /**********************************************************
  							5.
  **********************************************************/
 
-var tableMenu = new Menu([burritoPlate, guacamolePlate, margaritaDrink])
+	var tableMenu = new Menu([burritoPlate, guacamolePlate, margaritaDrink])
 
  /**********************************************************
  							6.
  **********************************************************/
 
-var bobsDiner = new Restaurant("Bob's Diner", " a family joint", tableMenu)
+	var bobsDiner = new Restaurant("Bob's Diner", " a family joint", tableMenu)
 
 
  /**********************************************************
@@ -197,7 +201,7 @@ var bobsDiner = new Restaurant("Bob's Diner", " a family joint", tableMenu)
 
 // want Bob's diner to print out: menu, with the plates o with the plates ingredients
 
-console.log(bobsDiner.toString())
+	console.log(bobsDiner.toString())
 
 /**********************************************************
  							UI
@@ -206,33 +210,33 @@ console.log(bobsDiner.toString())
  							1.
  **********************************************************/
 
-Drink.prototype.create = function(){
-		return $('<div class="drink-item">').text(name)
-	}
+	Drink.prototype.create = function(){
+			return $('<div class="drink-item">').text(name)
+		}
 
-Plate.prototype.create = function(){
-		return $('<div class="food-item">').text(name)
-	}
+	Plate.prototype.create = function(){
+			return $('<div class="food-item">').text(name)
+		}
 
-Order.prototype.create = function(){
-		return $('<div class="order-item">').text(name)
-	}
+	Order.prototype.create = function(){
+			return $('<div class="order-item">').text(name)
+		}
 
-Menu.prototype.create = function(){
-		return $('<div class="menu-item">').text(name)
-	}
+	Menu.prototype.create = function(){
+			return $('<div class="menu-item">').text(name)
+		}
 
-Restaurant.prototype.create = function(){
-		return $('<div class="restaurant-item">').text(name)
-	}
+	Restaurant.prototype.create = function(){
+			return $('<div class="restaurant-item">').text(name)
+		}
 
-Customer.prototype.create = function(){
-		return $('<div class="cusomter-item">').text(name)
-	}
+	Customer.prototype.create = function(){
+			return $('<div class="cusomter-item">').text(name)
+		}
 
-/**********************************************************
- 							2.
- *********************************************************/
+/****************************************************
+ 					Order Count
+*****************************************************/
 	var counter = 0
 	$('.food-button').on('click', function() {
 			counter += 1
@@ -240,9 +244,8 @@ Customer.prototype.create = function(){
 
 		})
 
-
 /***************************************************
- 					Price of orders.
+ 					Price of orders
  **************************************************/
 	
 	var burrTotal = 0
@@ -267,20 +270,31 @@ Customer.prototype.create = function(){
 	})
 
 
-
-
 /***************************************************
- 					Highlighting of diet preference
+ 			Highlighting of diet preference
  **************************************************/
+/*** functional ***/
+// $('.vegan').on('click', function(){
+// 	$('.vegan-target').toggleClass('highlighted')
+
+// 	})
+
+/*** Object Oriented ***/
+
+console.log(plateArray)
 
 $('.vegan').on('click', function(){
-	$('.vegan1').addClass('highlighted')
-	setTimeout(function(){
-		$('.vegan1').removeClass('highlighted');
-	}, 10);
-	})
+	for(var i = 0; i < plateArray.length; i ++){
+				if(plateArray.ingredients[i].isCitrusFree() === true) {
+			console.log("Hello")
+    	 } else {
+    	 	console.log("False")
+    	 }
 
+ 	  }
+  })
 
+// console.log(plateArray)
 
 });
 
