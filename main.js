@@ -1,6 +1,7 @@
 /**********************************************************
 						Part II
 **********************************************************/
+$(function() {
 
 /**********************************************************
 							1.
@@ -170,7 +171,7 @@ Plate.prototype.isCitrusFree = function(){
 
 var burritoPlate = new Plate("Burrito", "tasty", 8.00, ["meat", "flour", "lemon"])
 
-var guacamolePlate = new Plate("Guacamole Plate", "big", 10.00, ["avocado", "garlic", "lemon"])
+var guacamolePlate = new Plate("Guacamole Plate", "big", 5, ["avocado", "garlic", "lemon"])
 
 var margaritaDrink = new Drink("Margarita", "quenches thirst", 9.00, ["apple", "spirit", "olives"])
 
@@ -206,28 +207,83 @@ console.log(bobsDiner.toString())
  **********************************************************/
 
 Drink.prototype.create = function(){
-		return $('<div class="food-item">').text(name)
-	})
-}
+		return $('<div class="drink-item">').text(name)
+	}
+
 Plate.prototype.create = function(){
 		return $('<div class="food-item">').text(name)
-	})
-}
+	}
+
 Order.prototype.create = function(){
-		return $('<div class="food-item">').text(name)
-	})
-}
+		return $('<div class="order-item">').text(name)
+	}
+
 Menu.prototype.create = function(){
-		return $('<div class="food-item">').text(name)
-	})
-}
+		return $('<div class="menu-item">').text(name)
+	}
+
 Restaurant.prototype.create = function(){
-		return $('<div class="food-item">').text(name)
-	})
-}
+		return $('<div class="restaurant-item">').text(name)
+	}
+
 Customer.prototype.create = function(){
-		return $('<div class="food-item">').text(name)
+		return $('<div class="cusomter-item">').text(name)
+	}
+
+/**********************************************************
+ 							2.
+ *********************************************************/
+	var counter = 0
+	$('.food-button').on('click', function() {
+			counter += 1
+		$('.dishes-amount').text("Items ordered: " + counter)
+
+		})
+
+
+/***************************************************
+ 					Price of orders.
+ **************************************************/
+	
+	var burrTotal = 0
+	$('.burrito').on('click', function() {
+		burrTotal += burritoPlate.price
+		var bigTotal = +guacTotal + +burrTotal + +margTotal
+		$('.dollar-total').text("Total: $" + bigTotal)
 	})
-}
+
+	var guacTotal = 0
+	$('.guac').on('click', function() {
+		guacTotal += guacamolePlate.price
+		var bigTotal = +guacTotal + +burrTotal + +margTotal
+		$('.dollar-total').text("Total: $" + bigTotal)
+	})
+
+	var margTotal = 0
+	$('.margarita').on('click', function(){
+		margTotal += margaritaDrink.price 
+		var bigTotal = +guacTotal + +burrTotal + +margTotal
+		$('.dollar-total').text("Total: $" + bigTotal)
+	})
+
+
+
+
+/***************************************************
+ 					Highlighting of diet preference
+ **************************************************/
+
+$('.vegan').on('click', function(){
+	$('.vegan1').addClass('highlighted')
+	setTimeout(function(){
+		$('.vegan1').removeClass('highlighted');
+	}, 10);
+	})
+
+
+
+});
+
+
 
 
