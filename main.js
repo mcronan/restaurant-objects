@@ -273,30 +273,36 @@ $(function() {
 /***************************************************
  			Highlighting of diet preference
  **************************************************/
-/*** functional ***/
-// $('.vegan').on('click', function(){
-// 	$('.vegan-target').toggleClass('highlighted')
+	// $('.vegan').on('click', function(){
+	// 	$('.guac').toggleClass('highlighted')
 
-// 	})
+	// 	})
 
-/*** Object Oriented ***/
+	// $('.citrus').on('click', function(){
+	// 	$('.burrito').toggleClass('highlighted')
+	// 	})
 
-console.log(plateArray)
+	// $('.gluten').on('click', function(){
+	// 	$('.marg').toggleClass('highlighted')
 
-$('.vegan').on('click', function(){
-	for(var i = 0; i < plateArray.length; i ++){
-				if(plateArray.ingredients[i].isCitrusFree() === true) {
-			console.log("Hello")
-    	 } else {
-    	 	console.log("False")
-    	 }
+	// 	})
 
- 	  }
-  })
+		/*** Object Oriented ***/
 
-// console.log(plateArray)
+	$('.vegan').on('click', function(){
+		for(var i = 0; i < plateArray.length; i ++){
+					if(plateArray[i].isCitrusFree() === true) {
+					console.log(plateArray[i])
 
-});
+					// $(plateArray[i]).addClass('highlighted')
+
+	 	  }
+	  	}
+	 })
+
+	// console.log(plateArray)
+
+	});
 
 
 
